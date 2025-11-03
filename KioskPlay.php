@@ -3,6 +3,10 @@ $folder = 'KioskPlay'; //Ruta de acceso a las imagenes. En este caso, carpeta Ki
 $images = glob("$folder/*.{jpg,jpeg,png,gif,bmp,webp}", GLOB_BRACE);
 ?>
 
+<script>
+const interval = 300000; // ms por imagen
+</script>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -52,7 +56,6 @@ $images = glob("$folder/*.{jpg,jpeg,png,gif,bmp,webp}", GLOB_BRACE);
     let currentIndex = 0;
     const slideshow = document.getElementById('slideshow');
     const countdown = document.getElementById('countdown');
-    const interval = 300000; // ms por imagen
 
     function formatTime(ms) {
       const totalSeconds = Math.floor(ms / 1000);
