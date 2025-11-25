@@ -1,8 +1,8 @@
 <?php
-function obtenerMedia($folder = 'KIOSK_MEDIA') {
+function getMedia($folder = 'KIOSK_MEDIA') {
     $imagenes = glob("$folder/*.{jpg,jpeg,png,PNG,gif,bmp,webp}", GLOB_BRACE);
     $videos = glob("$folder/*.{mp4,webm,ogg}", GLOB_BRACE);
     return array_merge($imagenes, $videos);
 }
-
 ?>
+
