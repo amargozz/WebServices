@@ -1,28 +1,30 @@
+let VIDEO_MUTED = true; 
+
 async function startMediaLoop() {
     try {
-        // 1. Obtener lista desde PHP
+        // 1. get list from php
         const response = await fetch('mediaplay.php');
         const mediaList = await response.json();
 
         console.log("MEDIA LIST from mediaplay.php:", mediaList);
 
-        // 2. Reproducir secuencialmente
+        // 2. play secuence
         for (let i = 0; i < mediaList.length; i++) {
             const media = mediaList[i];
-            console.log("playing:", media);
-            await playMedia(media);
+            console.log(`playing: ${media.file} [${i + 1}/${mediaList.length}]`);
+            await playMedia(media, i + 1, mediaList.length);
         }
 
-        // 3. AL TERMINAR TODO EL CICLO → REFRESCAR PÁGINA
+        // 3. REALOAD AT END CYCLE
         console.log("reloading website...");
-        location.reload(); 
+        location.reload();
 
     } catch (error) {
         console.error('loading error:', error);
     }
 }
 
-function playMedia(media) {
+function playMedia(media, index, total) {
     return new Promise((resolve) => {
         const container = document.getElementById('slideshow');
         container.innerHTML = ''; // clear last content
@@ -38,7 +40,7 @@ function playMedia(media) {
 
             container.appendChild(element);
 
-            startCountdown(media.duration);
+            startCountdown(media.duration, media.file, index, total);
             setTimeout(resolve, media.duration * 1000);
         }
 
@@ -50,7 +52,7 @@ function playMedia(media) {
             element = document.createElement('video');
             element.src = media.file;
             element.autoplay = true;
-            element.muted = false;
+            element.muted = VIDEO_MUTED;
 
             element.onerror = () => {
                 console.error("ERROR al cargar el video:", media.file);
@@ -61,7 +63,7 @@ function playMedia(media) {
             element.addEventListener('loadedmetadata', () => {
                 const duration = Math.floor(element.duration);
                 console.log("video duration:", duration, "segundos");
-                startCountdown(duration);
+                startCountdown(duration, media.file, index, total);
             });
 
             element.onended = () => {
@@ -75,11 +77,14 @@ function playMedia(media) {
 // ----------------------------------------------------
 //  TIME COUNTDOWN
 // ----------------------------------------------------
-function startCountdown(seconds) {
+function startCountdown(seconds, filename, index, total) {
     const countdown = document.getElementById('countdown');
 
+    // Name without parent directory
+    const shortName = filename.split('/').pop();
+
     let remaining = seconds;
-    countdown.textContent = formatTime(remaining);
+    countdown.textContent = `${shortName} [${index}/${total}] [	${formatTime(remaining)}]`;
 
     clearInterval(window.countdownInterval);
 
@@ -87,12 +92,12 @@ function startCountdown(seconds) {
         remaining--;
 
         if (remaining >= 0) {
-            countdown.textContent = formatTime(remaining);
+            countdown.textContent = `${shortName} [${index}/${total}] [${formatTime(remaining)}]`;
         }
 
         if (remaining <= 0) {
             clearInterval(window.countdownInterval);
-        }
+        }	
     }, 1000);
 }
 
@@ -103,6 +108,6 @@ function formatTime(sec) {
 }
 
 // ----------------------------------------------------
-//  INICIAR
+//  START
 // ----------------------------------------------------
 startMediaLoop();
