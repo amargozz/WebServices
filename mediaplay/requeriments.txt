@@ -1,0 +1,9 @@
+only take images and videos; formats in "mediaplay.php"
+
+web service running
+PHP installed
+web service profile with access to folder
+
+define a folder in "mediaplay.php"
+
+if videos are not muted in "mediaplay.js" you should enable the audio autoplay in your browser
