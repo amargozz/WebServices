@@ -38,7 +38,6 @@ function playMedia(media, index, total) {
         //  	IMAGES
         // ----------------------------------------------------
         if (media.type === 'image') {
-
             element = document.createElement('img');
             element.src = media.file;
 
@@ -52,7 +51,6 @@ function playMedia(media, index, total) {
         //  VIDEOS
         // ----------------------------------------------------
         else if (media.type === 'video') {
-
             element = document.createElement('video');
             element.src = media.file;
             element.autoplay = true;
@@ -115,5 +113,6 @@ function formatTime(sec) {
 //  START
 // ----------------------------------------------------
 startMediaLoop();
+
 
 
