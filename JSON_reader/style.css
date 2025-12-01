@@ -1,0 +1,39 @@
+ body {
+      font-family: Arial, sans-serif;
+    }
+    #filterPanel {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #f0f0f0;
+    }
+    #toggleFilters {
+      cursor: pointer;
+      color: blue;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .file-container {
+      margin-bottom: 30px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .file-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 2fr;
+      gap: 5px;
+      background-color: #f9f9f9;
+      padding: 10px;
+    }
+    .grid div {
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+    }
+    .grid div:nth-child(3n-2) {
+      font-weight: bold;
+      background-color: #eef;
+    }
