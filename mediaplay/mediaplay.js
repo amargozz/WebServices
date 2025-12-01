@@ -1,4 +1,4 @@
-let VIDEO_MUTED = true; 
+let VIDEO_MUTED = false; 
 
 async function startMediaLoop() {
     try {
@@ -111,3 +111,4 @@ function formatTime(sec) {
 //  START
 // ----------------------------------------------------
 startMediaLoop();
+
