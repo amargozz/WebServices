@@ -16,8 +16,12 @@ async function startMediaLoop() {
         }
 
         // 3. REALOAD AT END CYCLE
-        console.log("reloading website...");
-        location.reload();
+        if (mediaList.length >= 1) {
+            console.log("refreshing...");
+            location.reload();
+        } else {
+            console.warn("no files to show");
+        }
 
     } catch (error) {
         console.error('loading error:', error);
@@ -111,4 +115,5 @@ function formatTime(sec) {
 //  START
 // ----------------------------------------------------
 startMediaLoop();
+
 
