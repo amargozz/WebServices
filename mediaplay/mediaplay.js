@@ -1,4 +1,5 @@
-let VIDEO_MUTED = false; 
+let VIDEO_MUTED = false;
+let IMG_DURATION = 11;
 
 async function startMediaLoop() {
     try {
@@ -43,8 +44,8 @@ function playMedia(media, index, total) {
 
             container.appendChild(element);
 
-            startCountdown(media.duration, media.file, index, total);
-            setTimeout(resolve, media.duration * 1000);
+            startCountdown(IMG_DURATION, media.file, index, total);
+            setTimeout(resolve, IMG_DURATION * 1000);
         }
 
         // ----------------------------------------------------
@@ -113,6 +114,7 @@ function formatTime(sec) {
 //  START
 // ----------------------------------------------------
 startMediaLoop();
+
 
 
 
