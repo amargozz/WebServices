@@ -12,8 +12,7 @@ function getMedia($folder, $imageDuration) {
     foreach ($imagenes as $img) {
         $mediaList[] = [
             'file' => $img,
-            'type' => 'image',
-            'duration' => $imageDuration
+            'type' => 'image'
         ];
     }
     // Videos
@@ -36,4 +35,5 @@ $content = json_encode($mediaList, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 header('Content-Type: application/json');
 echo $content;
 ?>
+
 
