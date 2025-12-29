@@ -1,0 +1,106 @@
+
+/* Reseteo útil para que los tamaños sean previsibles */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: black;
+}
+
+/* Contenedor principal: 90% alto de la ventana y 40% del ancho */
+.container {
+  height: 90vh;            /* 90% del alto de la pantalla */
+  width: 70vw;             /* 40% del ancho de la pantalla */
+  max-width: 1000px;        /* opcional: limita en pantallas muy grandes */
+  min-width: 320px;        /* opcional: que no se haga ridículamente pequeño */
+  margin: 24px auto;       /* centrado horizontal con margen superior/inferior */
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;  /* apilar row arriba y textarea abajo */
+  gap: 12px;
+  box-shadow: 0 6px 24px rgba(16, 24, 40, 0.08);
+}
+
+/* Fila compacta: elementos al lado, alineados verticalmente centrados */
+.row {
+  display: flex;
+  flex-wrap: wrap;         /* permite que se ajuste si no cabe */
+  align-items: center;
+  gap: 8px;                /* espacio compacto entre controles */
+}
+
+/* Estilo de controles dentro de la fila */
+.row label {
+  font-weight: 600;
+}
+
+.row input[type="number"] {
+  height: 36px;
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #fff;
+  color: #0f172a;
+  min-width: 110px;
+}
+
+/* Botón primario */
+.btn-primary {
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;     /* azul */
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Textarea: que ocupe la mayoría del container */
+#serialOutput {
+  flex: 1;                 /* ocupa todo el espacio vertical restante */
+  width: 100%;             /* llena el ancho del container */
+  resize: none;        /* opcional: solo vertical */
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  background: #f8fafc;
+  color: #0f172a;
+  overflow: auto;
+}
+
+/* Accesibilidad visual cuando el textarea es readonly */
+#serialOutput[readonly] {
+  background: lightgray;
+}
+
+/* Media queries opcionales para mejorar en pantallas pequeñas */
+@media (max-width: 768px) {
+  .container {
+    width: 90vw;           /* más ancho en móviles */
+    height: 85vh;          /* un poco menos alto para barras de navegación móviles    height: 85vh;          /* un poco menos alto para barras de navegación móviles */
+  }

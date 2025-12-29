@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COM</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <button class="btn-primary" id="connectButton">Select COM</button>
+
+        <div>
+            <label for="baudRate">Baud:</label>
+            <input type="number" id="baudRate" value="9600" min="110" max="115200">
+        </div>
+
+        <div>
+            <label for="parity">Parity:</label>
+            <select id="parity">
+                <option value="none">none</option>
+                <option value="even">even</option>
+                <option value="odd">odd</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="dataBits">data bits:</label>
+            <select id="dataBits">
+                <option value="7">7</option>
+                <option value="8" selected>8</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="stopBits">stop bits:</label>
+            <select id="stopBits">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+
+        <button class="btn-primary" id="sendButton">ENTER</button>
+        <button class="btn-primary">Export</button>
+    </div>
+
+    <textarea id="serialOutput" readonly></textarea>
+</div>
+
+<script src="serial.js"></script>
+</body>
+</html>
